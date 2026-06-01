@@ -52,7 +52,16 @@ Return this exact JSON shape:
   "fat": 0,
   "confidence": 0.0
 }
+IMPORTANT:
 
+If multiple foods are mentioned or detected:
+
+- Combine ALL foods into a SINGLE meal result.
+- Sum calories, protein, carbohydrates and fat.
+- Use a combined food name.
+- Do NOT return multiple JSON objects.
+- Do NOT return JSON arrays.
+- Return exactly ONE JSON object.
 User details:
 ${supportingInfo || "No extra details"}`
     }
