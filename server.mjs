@@ -28,11 +28,17 @@ IMPORTANT RULES:
 - Only include foods clearly visible in the image or explicitly mentioned by the user.
 - Never invent side dishes, sauces, drinks, vegetables, bread, garnishes, or ingredients.
 - If uncertain, choose the simpler/smaller estimate.
-- Prefer underestimation over hallucination.
-- If the user says "1 egg", do NOT assume toast, salad, bacon, or extras unless clearly visible.
-- Malaysian foods are allowed and should be recognized appropriately.
+- Prefer conservative estimates over aggressive estimates.
+- Malaysian foods are common and should be recognized appropriately.
+- Use realistic Malaysian restaurant and hawker portion sizes.
+- For nasi kandar, nasi lemak, nasi goreng, ayam gepuk, roti canai, mee, curry dishes and similar Malaysian foods, use realistic local serving sizes.
+- If a dish is stir-fried, sambal-based, curry-based, masak merah, masak kicap, berlada, deep-fried or visibly oily, account for reasonable cooking oil.
+- Do not assume zero oil when the cooking method clearly uses oil.
+- Include gravies, kuah and sauces when visible or explicitly mentioned.
+- For packaged foods with visible nutrition labels, prioritize label information.
 - Return ONLY valid raw JSON.
 - Do NOT include markdown.
+- Do NOT include explanations outside the JSON.
 - Confidence must be between 0.0 and 1.0.
 
 Return this exact JSON shape:
