@@ -79,18 +79,32 @@ ${supportingInfo || "No extra details"}`
 
     const text = response.output_text.trim();
 
-    console.log("OpenAI response:");
-    console.log(text);
+console.log("OpenAI response:");
+console.log(text);
 
-    const jsonMatch = text.match(/\{[\s\S]*\}/);
+let jsonText = text;
 
-    if (!jsonMatch) {
-      throw new Error(`No JSON found in OpenAI response: ${text}`);
-    }
+// Remove markdown fences if present
+jsonText = jsonText.replace(/```json/g, "");
+jsonText = jsonText.replace(/```/g, "");
+jsonText = jsonText.trim();
 
-    const json = JSON.parse(jsonMatch[0]);
+// Extract first JSON object only
+const firstBrace = jsonText.indexOf("{");
+const lastBrace = jsonText.lastIndexOf("}");
 
-    res.json(json);
+if (firstBrace === -1 || lastBrace === -1) {
+  throw new Error(`No JSON found in OpenAI response: ${text}`);
+}
+
+jsonText = jsonText.substring(
+  firstBrace,
+  lastBrace + 1
+);
+
+const json = JSON.parse(jsonText);
+
+res.json(json);
 
   } catch (error) {
     console.error("Meal analysis error:", error);
